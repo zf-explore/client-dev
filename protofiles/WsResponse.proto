@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package PB;
+
+message WsResponse {
+    uint32 cmd = 1;
+    uint32 code = 2;
+}
