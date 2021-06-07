@@ -84,4 +84,9 @@ export class Card extends Component {
             this.tween = null;
         }
     }
+
+    relocation() {
+        this.node.getPosition(this.originPosition);
+        this.node.getRotation(this.originRotation);
+    }
 }
