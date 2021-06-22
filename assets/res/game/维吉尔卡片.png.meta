@@ -2,7 +2,7 @@
   "ver": "1.0.21",
   "importer": "image",
   "imported": true,
-  "uuid": "28c949c1-c73f-4add-8ea5-b55dae090947",
+  "uuid": "64b93fd5-0757-404b-ba59-8f619eff3a71",
   "files": [
     ".png",
     ".json"
@@ -10,8 +10,8 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "28c949c1-c73f-4add-8ea5-b55dae090947@6c48a",
-      "displayName": "game_time_bg",
+      "uuid": "64b93fd5-0757-404b-ba59-8f619eff3a71@6c48a",
+      "displayName": "维吉尔卡片",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -20,9 +20,9 @@
         "minfilter": "linear",
         "magfilter": "linear",
         "mipfilter": "none",
-        "anisotropy": 1,
+        "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "28c949c1-c73f-4add-8ea5-b55dae090947"
+        "imageUuidOrDatabaseUri": "64b93fd5-0757-404b-ba59-8f619eff3a71"
       },
       "ver": "1.0.21",
       "imported": true,
@@ -33,29 +33,29 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "28c949c1-c73f-4add-8ea5-b55dae090947@f9941",
-      "displayName": "game_time_bg",
+      "uuid": "64b93fd5-0757-404b-ba59-8f619eff3a71@f9941",
+      "displayName": "维吉尔卡片",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
         "trimType": "auto",
         "trimThreshold": 1,
         "rotated": false,
-        "offsetX": 0,
-        "offsetY": 0,
-        "trimX": 0,
+        "offsetX": 23.5,
+        "offsetY": 1.5,
+        "trimX": 48,
         "trimY": 0,
-        "width": 473,
-        "height": 39,
-        "rawWidth": 473,
-        "rawHeight": 39,
+        "width": 326,
+        "height": 509,
+        "rawWidth": 375,
+        "rawHeight": 512,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
         "borderRight": 0,
         "packable": true,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "28c949c1-c73f-4add-8ea5-b55dae090947@6c48a",
+        "imageUuidOrDatabaseUri": "64b93fd5-0757-404b-ba59-8f619eff3a71@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.9",
@@ -69,6 +69,6 @@
   "userData": {
     "hasAlpha": true,
     "type": "sprite-frame",
-    "redirect": "28c949c1-c73f-4add-8ea5-b55dae090947@f9941"
+    "redirect": "64b93fd5-0757-404b-ba59-8f619eff3a71@f9941"
   }
 }

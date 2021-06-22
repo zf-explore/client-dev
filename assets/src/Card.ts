@@ -1,4 +1,5 @@
 import { _decorator, Component, Node, EventTouch, tween, v3, Tween, Vec3, Vec2, UITransform, quat, Quat } from 'cc';
+import { CardControl } from './CardControl';
 const { ccclass, property } = _decorator;
 
 const temp_v2 = new Vec2;
@@ -19,14 +20,14 @@ export class Card extends Component {
         this.node.on(Node.EventType.TOUCH_START, this.onTouchStart, this);
         this.node.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
         this.node.on(Node.EventType.TOUCH_END, this.onTouchEnd, this);
-        this.node.on(Node.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
+        this.node.on(Node.EventType.TOUCH_CANCEL, this.onTouchCancel, this);
     }
 
     onDisable() {
         this.node.off(Node.EventType.TOUCH_START, this.onTouchStart, this);
         this.node.off(Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
         this.node.off(Node.EventType.TOUCH_END, this.onTouchEnd, this);
-        this.node.off(Node.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
+        this.node.off(Node.EventType.TOUCH_CANCEL, this.onTouchCancel, this);
     }
 
     onTouchStart() {
@@ -43,17 +44,17 @@ export class Card extends Component {
     }
 
     onTouchMove(ev: EventTouch) {
-        let cardSlot = this.node.parent;
-        let uiCardSlot = cardSlot.getComponent(UITransform);
+        let parent = this.node.parent;
+        let uiParent = parent.getComponent(UITransform);
 
         ev.getUILocation(temp_v2);
 
-        cardSlot.getWorldPosition(temp_v3);
+        parent.getWorldPosition(temp_v3);
         temp_v3.x = temp_v2.x - temp_v3.x;
         temp_v3.y = temp_v2.y - temp_v3.y;
         temp_v3.z = 0;
 
-        if (!this.draging && temp_v3.y > uiCardSlot.height / 2) {
+        if (!this.draging && temp_v3.y > uiParent.height / 2) {
             this.draging = true;
             this.stopTween();
             this.tween = new Tween(this.node);
@@ -69,7 +70,35 @@ export class Card extends Component {
         }
     }
 
-    onTouchEnd() {
+    onTouchEnd(ev: EventTouch) {
+        let parent = this.node.parent;
+        let uiParent = parent.getComponent(UITransform);
+        let cardControl = parent.getComponent(CardControl);
+
+        ev.getUILocation(temp_v2);
+
+        parent.getWorldPosition(temp_v3);
+        temp_v3.x = temp_v2.x - temp_v3.x;
+        temp_v3.y = temp_v2.y - temp_v3.y;
+        temp_v3.z = 0;
+
+        if (temp_v3.y > uiParent.height / 2) {
+            let t = tween(this.node);
+            t.to(0.1, {
+                scale: v3(1.4, 1.4)
+            }).call(() => {
+                cardControl.removeCard(this.node);
+            }).start();
+        } else {
+            this.homing();
+        }
+    }
+
+    onTouchCancel() {
+        this.homing();
+    }
+
+    homing() {
         this.stopTween();
         this.node.setScale(1, 1, 1);
         this.node.setPosition(this.originPosition);

@@ -81,6 +81,16 @@ export class CardControl extends Component {
         node.setScale(uiBirth.width / uiCard.width, uiBirth.height / uiCard.height);
     }
 
+    removeCard(node: Node) {
+        for (let i = 0; i < this.cards.length; i++) {
+            if (this.cards[i].node == node) {
+                this.cards.splice(i, 1);
+                node.removeFromParent();
+                break;
+            }
+        }
+    }
+
     update(dt: number) {
         if (this.sortnum != this.cards.length && !this.sorting) {
             this.sorting = true;
